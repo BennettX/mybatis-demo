@@ -8,10 +8,10 @@ import org.apache.ibatis.annotations.Options;
 @Mapper
 public interface UserDao {
 
-    @Insert("INSERT INTO `mybatis_demo`.`t_user` ( `id`, `user_name`, `password`, `email`, `telephone`, `create_by`, " +
-            "`create_time`, `update_by`, `update_time` ) VALUES ( #{userName}, '#{password}', '#{email}'," +
-            " '#{telephone}', '#{createBy}', '#{createTime}', '#{updateBy}', '#{updateTime}' )")
-    @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "model.id")
+    @Insert("INSERT INTO `mybatis_demo`.`t_user` ( `user_name`, `password`, `email`, `telephone`, `create_by`, " +
+            "`create_time`, `update_by`, `update_time` ) VALUES ( #{userName}, #{password}, #{email}," +
+            " #{telephone}, #{createBy}, now(), #{updateBy}, now() )")
+    @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
     int insert(UserModel model);
 
 }

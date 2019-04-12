@@ -1,25 +1,35 @@
 package com.example.mybatisdemo.controller;
 
-import com.example.mybatisdemo.model.dto.RegisterDto;
+import com.example.mybatisdemo.dao.UserDao;
+import com.example.mybatisdemo.model.UserModel;
+import com.example.mybatisdemo.model.dto.DataResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * @author xhj
  */
-@Component
+@Controller
 @RequestMapping("**/account")
 public class AccountController {
 
+    @Resource
+    private UserDao userDao;
+
     @PostMapping("register")
-    public String register(@RequestBody RegisterDto dto){
+    @ResponseBody
+    public DataResult register(@RequestBody @Valid UserModel model) {
 
+        int id = userDao.insert(model);
 
-
-        String s = "" +
-                "";
-        return "";
+        return DataResult.of(String.valueOf(id));
     }
 }
