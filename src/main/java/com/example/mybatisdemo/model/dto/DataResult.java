@@ -22,8 +22,16 @@ public class DataResult<T> implements Serializable {
         this.data = data;
     }
 
-    public static DataResult of(String data) {
+    public static <T> DataResult<T> of(T data) {
         return new DataResult<>(0, null, data);
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
     }
 
     public int getRetCode() {
