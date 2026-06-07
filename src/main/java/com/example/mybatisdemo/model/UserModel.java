@@ -1,6 +1,5 @@
 package com.example.mybatisdemo.model;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * @author xhj
@@ -12,10 +11,8 @@ public class UserModel {
 
     private Long id;
 
-    @NotNull
     private String userName;
 
-    @NotNull
     private String password;
 
     private String email;
